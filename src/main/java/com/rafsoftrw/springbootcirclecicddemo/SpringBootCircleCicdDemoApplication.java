@@ -9,9 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SpringBootCircleCicdDemoApplication {
 
+    private final DatasourceConfig datasourceConfig;
+
+    public SpringBootCircleCicdDemoApplication(DatasourceConfig datasourceConfig) {
+        this.datasourceConfig = datasourceConfig;
+    }
+
     @RequestMapping("/")
     public String home(){
-        return "Hello Docker World";
+        return datasourceConfig.setup();
     }
 
     public static void main(String[] args) {
